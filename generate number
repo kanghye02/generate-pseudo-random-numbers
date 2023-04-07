@@ -1,14 +1,18 @@
-class RandomNumberGenerator:
-    def __init__(self, seed, a=1103515245, c=12345, m=2**31-1):
-        self.seed = seed
-        self.a = a
-        self.c = c
-        self.m = m
+//thuật toán Linear Congruential Generator (LCG)
+//một thuật toán phổ biến để tạo số ngẫu nhiên dựa trên
+//một giá trị khởi tạo ban đầu (seed), một hệ số (a), một hằng số (c) và một số nguyên tố (m)
+
+class RandomNumberGenerator: // khai báo giá trị
+    def __init__(self, seed, a=1103515245, c=12345, m=2**31-1): //khởi tạo đối tượng của một lớp
+        self.seed = seed    //giá trị khởi tạo ban đầu
+        self.a = a          //hệ số 
+        self.c = c          //hằng số
+        self.m = m          //số nguyên tố
     
-    def generate(self, num_random_numbers):
-        random_numbers = []
-        x = self.seed
-        for i in range(num_random_numbers):
-            x = (self.a*x + self.c) % self.m
-            random_numbers.append(x/self.m)
-        return random_numbers
+    def generate(self, num_random_numbers):     //khởi tạo
+        random_numbers = []                     //tạo mảng
+        x = self.seed                           //Khởi tạo giá trị x ban đầu bằng giá trị seed
+        for i in range(num_random_numbers):     //khởi tạo (num_random_numbers) giá trị
+            x = (self.a*x + self.c) % self.m    //Sử dụng công thức x = (a*x + c) % m để tính giá trị của x
+            random_numbers.append(x/self.m)     //Thêm giá trị x/m vào danh sách các số ngẫu nhiên
+        return random_numbers                   //Trả về danh sách các số ngẫu nhiên đã được tạo
